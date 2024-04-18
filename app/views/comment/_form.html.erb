@@ -1,0 +1,18 @@
+<h2>Add a comment:</h2>
+<%= form_with(model: [@article, @comment]) do |form| %>
+  <% if current_user %>
+    <p>Logado como: <%= current_user.name_user %></p>
+  <% else %>
+    <div class="field">
+      <%= form.label :author_name, "Nome (opcional)" %>
+      <%= form.text_field :author_name, placeholder: "Seu nome (opcional)" %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :body, "Comentário" %>
+    <%= form.text_area :body, placeholder: "Digite seu comentário aqui" %>
+  </div>
+  <div class="actions">
+    <%= form.submit "Enviar Comentário" %>
+  </div>
+<% end %>

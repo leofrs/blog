@@ -1,7 +1,32 @@
-<h1><%= @article.title %></h1>
+<h1>Pagina saiba mais sobre o post</h1>
+
+<h2><%= @article.title %></h2>
 
 <p><%= @article.body %></p>
 
+
+
+<h2>Comments</h2>
+<% if @article.comments.any? %>
+  <% @article.comments.each do |comment| %>
+    <p>
+      <strong>Author:</strong>
+      <%= comment.author_name %>
+    </p>
+
+    <p>
+      <strong>Comentario:</strong>
+      <%= comment.body %>
+    </p>
+  <% end %>
+<% else %>
+  <p>Nenhum comentário</p>
+<% end %>
+
+
+<%= render "comment/form", comments: @comment %>
+
+<% if current_user %>
 <ul>
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li><%= link_to "Destroy", article_path(@article), data: {
@@ -9,3 +34,6 @@
                     turbo_confirm: "Are you sure?"
                   } %></li>
 </ul>
+<% else %>
+
+<% end %>
