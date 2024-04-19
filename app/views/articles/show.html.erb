@@ -1,39 +1,36 @@
-<h1>Pagina saiba mais sobre o post</h1>
+<section class = "show_container">
+  <div class = "show">
+    <h2 class = "title"><%= @article.title %></h2>
+    <p class = "body" ><%= @article.body %></p>
+  </div>
 
-<h2><%= @article.title %></h2>
+  <%= render "comment/form", comments: @comment %>
 
-<p><%= @article.body %></p>
-
-
-
-<h2>Comments</h2>
-<% if @article.comments.any? %>
-  <% @article.comments.each do |comment| %>
-    <p>
-      <strong>Author:</strong>
-      <%= comment.author_name %>
-    </p>
-
-    <p>
-      <strong>Comentario:</strong>
-      <%= comment.body %>
-    </p>
+  <% if current_user %>
+    <ul>
+      <li><%= link_to "Edit", edit_article_path(@article) %></li>
+      <li><%= link_to "Destroy", article_path(@article), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                      } %></li>
+    </ul>
   <% end %>
-<% else %>
-  <p>Nenhum comentário</p>
-<% end %>
 
+  <h2>Comentários</h2>
+  <% if @article.comments.any? %>
+    <% @article.comments.each do |comment| %>
+      <p>
+        <strong>Author:</strong>
+        <%= comment.author_name %>
+      </p>
 
-<%= render "comment/form", comments: @comment %>
+      <p>
+        <strong>Comentario:</strong>
+        <%= comment.body %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>Nenhum comentário</p>
+  <% end %>
+</section>
 
-<% if current_user %>
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
-<% else %>
-
-<% end %>

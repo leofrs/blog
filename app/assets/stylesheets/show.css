@@ -1,0 +1,26 @@
+.show_container {
+    background-color: #fafafa;
+    font-family: 'Open Sans', sans-serif;
+    padding: 25px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.show_container .show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shhow .title {
+    max-width: 600px;
+    text-align: center;
+    margin: 15px 0px;
+}
+
+.show_container .body {
+    text-align: center;
+    max-width: 600px;
+    margin: 15px 0px;
+}
