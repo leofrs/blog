@@ -15,6 +15,8 @@ gem "pg"
 
 gem 'will_paginate'
 
+gem 'mailcatcher'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
