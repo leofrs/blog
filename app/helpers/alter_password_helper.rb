@@ -1,0 +1,2 @@
+module AlterPasswordHelper
+end

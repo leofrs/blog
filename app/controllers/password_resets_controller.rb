@@ -13,19 +13,26 @@ class PasswordResetsController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = "Email not found."
-      render :new
+      @user = User.new
+      render :edit
     end
   end
 
   def edit
     @user = User.find_by_reset_password_token(params[:reset_password_token])
+    if @user.nil?
+      flash[:error] = "Invalid reset password token."
+      redirect_to root_path
+    end
   end
 
   def update
     @user = User.find_by_reset_password_token(params[:reset_password_token])
     if @user.update(password_params)
-      # senha redefinida com sucesso
+      redirect_to login_path, notice: "Password successfully updated. Please login with your new password."
     else
+      flash.now[:error] = "Failed to update password."
+      puts @user.errors.full_messages
       render :edit
     end
   end
@@ -33,6 +40,6 @@ class PasswordResetsController < ApplicationController
   private
 
   def password_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.require(:user).permit(:password)
   end
 end

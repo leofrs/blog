@@ -5,7 +5,7 @@ class User < ApplicationRecord
     validates :name, presence: true
     validates :name_user, presence: true
     validates :email, presence: true, uniqueness: true
-    validates :password_digest, presence: true
+    validates :password_digest, presence: true, length: { minimum: 6 }
 
     def generate_reset_password_token
         self.reset_password_token = SecureRandom.hex(20)

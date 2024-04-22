@@ -17,6 +17,10 @@ gem 'will_paginate'
 
 gem 'mailcatcher'
 
+gem 'rails-i18n'
+
+gem 'sidekiq', '~> 4.1', '>= 4.1.2'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
@@ -53,6 +57,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do

@@ -2,6 +2,7 @@
   <div class = "show">
     <h2 class = "title"><%= @article.title %></h2>
     <p class = "body" ><%= @article.body %></p>
+    <p class = "body" ><%= @article.tag_list %></p>
   </div>
 
   <%= render "comment/form", comments: @comment %>

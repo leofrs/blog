@@ -13,3 +13,6 @@ development:
 production:
   <<: *default
   database: blog_desafio_production
+
+test:
+  <<: *default

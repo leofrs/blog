@@ -1,5 +1,5 @@
 class LoginController < ApplicationController
-  before_action :require_login, except: [:index, :create]
+  before_action :require_login, except: [:index, :create, :destroy]
 
   def index
   end
@@ -13,7 +13,7 @@ class LoginController < ApplicationController
     else
       # Login falhou
       flash.now[:alert] = "Combinação de e-mail/senha inválida"
-      render :new
+      redirect_to "/login"
     end
   end
 

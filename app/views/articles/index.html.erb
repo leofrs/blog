@@ -1,25 +1,28 @@
-<section class = "article_container">
-  <h1 class = "title">Blog Posts</h1>
-  <div class = "list_container">
+<section class="article_container">
+  <h1 class="title">Blog Posts</h1>
+  <div class="list_container">
     <% @article.each do |article| %>
-      <div class = "article">
-         <h2><%= article.title %></h2> 
-         <div class = "info">
+      <div class="article">
+        <h2><%= article.title %></h2>
+        <div class="info">
           <p>Autor: <%= article.user.name_user %></p>
           <p>Comentários: <%= article.comments.count %></p>
-         </div>
-         <p class = "body">consectetur animi nesciunt iure dolore enim quia ad veniam autem ut quam aut nobis et est aut quod aut provident voluptas autem voluptas</p>
+        </div>
+        <p class="body"><%= article.body %></p>
         
-          <a href="<%= article_path(article) %>">
-            <%= "Veja mais" %>
-          </a>
-          
+        <!-- Exibindo as tags -->
+        <div class="tags">
+          <% article.tags.each do |tag| %>
+            <span class="tag"><%= tag.name %></span>
+          <% end %>
+        </div>
+        
+        <a href="<%= article_path(article) %>">
+          <%= "Veja mais" %>
+        </a>
       </div>
-     
     <% end %>
-  </ul>
-
-  
+  </div>
 
   <%= will_paginate @article %>
 </section>

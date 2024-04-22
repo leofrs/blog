@@ -18,6 +18,11 @@
     <% end %>
   </div>
 
+  <div class="field">
+      <%= form.label :tag_list, 'Tags' %>
+      <%= form.text_field :tag_list, placeholder: 'Digite suas tags separadas por vírgula' %>
+  </div>
+  
   <div>
     <%= form.submit "Postar" %>
   </div>

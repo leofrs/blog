@@ -1,0 +1,12 @@
+<h1>Editar Perfil</h1>
+
+<h3>Olá, <%= @user.name %></h3>
+
+<p>Abaixo você encontra a opção de alterar algumas informações do seu perifl caso queira</p>
+
+<div>
+    <p><%= link_to "Editar perfil", edit_user_path(@user) %></p>
+    <p><%= link_to "Redefinir Senha", edit_password_path(@user) %></p>
+</div>
+
+
